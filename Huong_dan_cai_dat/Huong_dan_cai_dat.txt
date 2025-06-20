@@ -1,0 +1,59 @@
+Triển khai hệ thống
+
+1. Cài đặt công cụ
+   1.1 Cài đặt Kubernetes
+   Link: https://phoenixnap.com/kb/kubernetes
+
+   1.2 Cài đặt Helm
+   Link: https://phoenixnap.com/kb/install-helm
+   
+   1.3 Cài đặt Lens (công cụ quản lý Kubernetes)
+   Link: https://spacelift.io/blog/lens-kubernetes
+
+2. Tạo cụm Kubernetes với Minikube
+   2.1 Khởi tạo cụm
+   Lệnh:
+   minikube start --nodes 3 -p hadoop-ecosystem
+
+   2.2 Gán nhãn cho các nút
+   kubectl label node hadoop-ecosystem-m02 node-role.kubernetes.io/worker=worker
+   kubectl label nodes hadoop-ecosystem-m02 role=worker
+
+   kubectl label node hadoop-ecosystem-m03 node-role.kubernetes.io/worker=worker
+   kubectl label nodes hadoop-ecosystem-m03 role=worker
+
+3. Triển khai hệ thống
+   3.0 Tạo namespace
+   kubectl create namespace hadoop-ecosystem
+   kubectl config set-context --current --namespace=hadoop-ecosystem
+
+   3.1 Triển khai Flask
+   kubectl create -f ./kubernetes/flask
+
+   3.2 Triển khai Kafka
+   kubectl create -f ./kubernetes/kafka
+
+   3.3 Triển khai Airflow
+   helm install airflow ./kubernetes/airflow
+
+   3.4 Triển khai Hadoop
+   helm install hadoop ./kubernetes/hadoop
+
+   3.5 Triển khai Hive
+   helm install hive-metastore ./kubernetes/hive-metastore
+
+   3.6 Triển khai Trino
+   helm install trino ./kubernetes/trino
+
+   3.7 Triển khai Superset
+   helm install superset ./kubernetes/superset
+
+4. Chuẩn bị sử dụng
+   4.1 Tải tập dữ liệu
+   Link: https://www.kaggle.com/datasets/microize/newyork-yellow-taxi-trip-data-2020-2019?select=yellow_tripdata_2019-01.csv&fbclid=IwY2xjawIzv8tleHRuA2FlbQIxMAABHYmSL0Kc8w3hV38gg194bHKkszDm2XKtSqTGxQuxAjZq6NBYCM1NTfh6-Q_aem_VI6kfTy5aVczZ5iodKuOvA
+
+   4.2 Chuyển tập dữ liệu vào hệ thống
+   kubectl cp /duong/dan/datasource <pod-flask-1>:/data
+   kubectl cp /duong/dan/datasource <pod-flask-2>:/data
+
+
