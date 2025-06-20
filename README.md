@@ -13,7 +13,7 @@
 </ul>
 
 ## System architecture
-  <img src="https://github.com/hoangnm1111/Hadoop_Ecosystem_With_K8s/tree/main/img/system.png">
+  <img src="https://github.com/hoangnm1111/Hadoop_Ecosystem_With_K8s/blob/main/img/system.png">
 
 ## Deploy
 ### 1. Install tools
