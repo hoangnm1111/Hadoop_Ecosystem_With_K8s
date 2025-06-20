@@ -19,20 +19,15 @@
 ### 1. Install tools
 #### 1.1 Install Kubernetes
 ```
-https://phoenixnap.com/kb/kubernetes-on-windows
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 ```
 
 #### 1.2 Install Helm
 ```
-https://phoenixnap.com/kb/install-helm
+https://helm.sh/docs/intro/install/
 ```
 
-#### 1.3 Install WSL
-```
-https://kubernetes.io/blog/2020/05/21/wsl-docker-kubernetes-on-the-windows-desktop
-```
-
-#### 1.4 Install Lens
+#### 1.3 Install Lens
 ```
 https://spacelift.io/blog/lens-kubernetes
 ```
@@ -95,17 +90,12 @@ helm install superset ./kubernetes/superset
 ### 4. Pre-use
 #### 4.1 Download data source
 ```
-https://www.kaggle.com/datasets/robikscube/flight-delay-dataset-20182022/data?select=readme.md
+https://www.kaggle.com/datasets/microize/newyork-yellow-taxi-trip-data-2020-2019
 ```
 
 #### 4.2 Move data source to system
 ```sh
 kubectl cp /path/to/datasource <pod-flask-1>:/data & kubectl cp /path/to/datasource <pod-flask-2>:/data
-```
-
-#### 4.3 Config Spark and Hadoop on Airflow
-```
-Read in readme.md in folder builded-airflow
 ```
 
 ## Demo
